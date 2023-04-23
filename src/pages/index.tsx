@@ -1,13 +1,17 @@
+import ContentPreview from "@/components/ContentPreview";
+import HeroLanding from "@/components/HeroLanding";
+import MainPoster from "@/components/MainPoster";
+import SliderSection from "@/components/SliderSection";
 import React from "react";
-import HeroLanding from "~/components/HeroLanding";
 
 interface indexProps {}
 const Home: React.FC<indexProps> = () => {
   return (
-    <div className=" h-auto w-full bg-primary">
-      {/* hero */}
+    <div className=" h-auto w-full  space-y-[10vh] bg-primary md:space-y-[20vh]">
       <HeroLanding />
-      <div className="h-screen w-full">123</div>
+      <SliderSection />
+      <ContentPreview />
+      <MainPoster />
     </div>
   );
 };
