@@ -3,7 +3,7 @@ import postMock from "@/utils/postMock";
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import SecondaryTitle from "./ui/SecondaryTitle";
+import SecondaryTitle from "../ui/SecondaryTitle";
 interface SliderSectionProps {}
 const SliderSection: React.FC<SliderSectionProps> = () => {
   const [currentNumber, setcurrentNumber] = useState(0);
@@ -43,7 +43,7 @@ const SliderSection: React.FC<SliderSectionProps> = () => {
       <SecondaryTitle text="ALL YOUR ORIGINALS IN ONE PLACE" />
 
       {/* MainSlider */}
-      <div className="  z-30  flex h-auto min-h-[100vh]  w-full flex-col md:flex-row">
+      <div className="  z-30  flex h-auto min-h-[100vh] w-full  flex-col md:flex-row">
         {/* left */}
         <div className="h-auto w-full flex-[2] bg-primary ">
           <div className="   md:min-h-[100vh]:  flex h-full w-full items-center justify-center shadow-md shadow-secondary">
@@ -61,11 +61,11 @@ const SliderSection: React.FC<SliderSectionProps> = () => {
           {currentData?.images.map((image, index) => (
             <div
               key={index}
-              className=" image-warper col-span-1 w-full origin-center"
+              className="  col-span-1 min-h-[200px] w-full origin-center"
             >
               <img
                 src={image}
-                className="h-full w-full rounded-lg shadow-lg shadow-secondary "
+                className="image-warper h-full w-full rounded-lg object-cover shadow-lg  shadow-secondary"
                 alt=""
               />{" "}
             </div>

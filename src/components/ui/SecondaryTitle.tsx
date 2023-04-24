@@ -7,7 +7,7 @@ const SecondaryTitle = ({
 }) => {
   return (
     <div className="relative mb-20 h-auto w-auto">
-      <h3 className="relative z-10  font-Oswald text-2xl font-bold text-white  drop-shadow-2xl md:text-5xl">
+      <h3 className="relative z-10  font-Oswald text-2xl font-bold text-white  drop-shadow-2xl md:text-3xl lg:text-5xl">
         {text}
       </h3>
 

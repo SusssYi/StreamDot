@@ -2,11 +2,13 @@ import GsapAnimation from "@/utils/Animations";
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useEffect } from "react";
-import MainButton from "./ui/MainButton";
+import { useMediaQuery } from "react-responsive";
+import MainButton from "../ui/MainButton";
 
 interface HeroLandingProps {}
 // HeroLanding component
 const HeroLanding: React.FC<HeroLandingProps> = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const images = [
     "/images/heroLanding/slide1.webp",
     "/images/heroLanding/slide2.webp",
@@ -36,13 +38,15 @@ const HeroLanding: React.FC<HeroLandingProps> = () => {
             height={100}
           />
         </div>
-        <div className=" flex h-auto w-auto items-center space-x-2">
-          {/* sign in */}
-          <MainButton style="dark" text="SIGN IN" />
+        {!isMobile && (
+          <div className=" flex h-auto w-auto items-center space-x-2">
+            {/* sign in */}
+            <MainButton style="dark" text="SIGN IN" />
 
-          {/* sign up */}
-          <MainButton style="light" text="SIGN UP" />
-        </div>
+            {/* sign up */}
+            <MainButton style="light" text="SIGN UP" />
+          </div>
+        )}
       </nav>
       {/* Text mask */}
       <section className=" md:space-y- absolute inset-0 z-[30] flex h-screen w-full flex-col items-center justify-center space-y-4 bg-gradient-to-b from-transparent to-primary">

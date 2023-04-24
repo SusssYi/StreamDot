@@ -1,16 +1,22 @@
 import React from "react";
-import MainButton from "./ui/MainButton";
-import SecondaryTitle from "./ui/SecondaryTitle";
+import { useMediaQuery } from "react-responsive";
+import MainButton from "../ui/MainButton";
+import SecondaryTitle from "../ui/SecondaryTitle";
 
 interface ContentPreviewProps {}
 const ContentPreview: React.FC<ContentPreviewProps> = () => {
+  const isMobile = useMediaQuery({ query: "(min-width: 840px)" });
   return (
     <div
-      className="flex h-auto min-h-[100vh] w-full flex-col items-center py-10"
+      className=" flex h-auto min-h-[100vh] w-full flex-col items-center space-y-16 py-10 xl:space-y-0"
       data-aos="fade-up"
     >
       {/* title */}
-      <SecondaryTitle LineLength={110} text="STREAM ANYWHERE ANYTIME" />
+      {isMobile ? (
+        <SecondaryTitle LineLength={105} text="STREAM ANYWHERE ANYTIME" />
+      ) : (
+        <SecondaryTitle LineLength={20} text="STREAM ANYWHERE ANYTIME" />
+      )}
       {/* Main banner  */}
       <div className="relative flex h-auto w-full justify-center">
         <div className="contents">
@@ -30,7 +36,7 @@ const ContentPreview: React.FC<ContentPreviewProps> = () => {
         </div>
       </div>
       {/* Devices*/}
-      <div className=" mt-4 flex  h-auto w-full">
+      <div className=" mt-4 flex h-auto w-full  flex-col xl:flex-row">
         <div className="  flex h-[20vh] w-full flex-1  items-center justify-center space-x-8">
           <div>
             <ComputerSvg isComputer={true} size={300} />
@@ -52,7 +58,7 @@ const ContentPreview: React.FC<ContentPreviewProps> = () => {
         </div>
       </div>
       {/* Button */}
-      <div>
+      <div className="mt-20 md:mt-0">
         <MainButton shadow={true} style="light" text="SIGN UP NOW" />
       </div>
     </div>
@@ -115,7 +121,7 @@ const ComputerSvg = ({
           transform="translate(1629 3706.837)"
           fill="none"
           stroke="#411fd1"
-          stroke-width="6"
+          strokeWidth={6}
         >
           <rect width="169" height="222" rx="12" stroke="none"></rect>
           <rect x="3" y="3" width="163" height="216" rx="9" fill="none"></rect>
@@ -124,7 +130,7 @@ const ComputerSvg = ({
           transform="translate(1606 3804.837)"
           fill="#050314"
           stroke="#707070"
-          stroke-width="1"
+          strokeWidth="1"
         >
           <rect width="70" height="138" rx="8" stroke="none"></rect>
           <rect

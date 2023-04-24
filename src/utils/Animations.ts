@@ -58,7 +58,7 @@ const GsapAnimation = {
         ".logo",
         {
           duration: 1.2,
-          width: 0,
+          scale: 0,
           opacity: 0,
           ease: "power4.out",
           transformOrigin: "50% 50%",
@@ -69,13 +69,27 @@ const GsapAnimation = {
         ".image-warper",
         {
           duration: 1.2,
-          width: 0,
+          // width: 0
+          scale: 0,
           opacity: 0,
           ease: "power4.out",
           transformOrigin: "50% 50%",
         },
         "same"
       );
+  },
+  HorizontalSliderAnimation: (
+    el: React.MutableRefObject<HTMLDivElement>,
+    duration: number
+  ) => {
+    const tl = gsap.timeline({ repeat: -1 });
+
+    tl.to(el.current, {
+      x: "-200%",
+      duration: duration,
+      ease: "none",
+    });
+    tl.to(el.current, { x: 0, duration: duration, ease: "none" });
   },
 };
 
