@@ -67,7 +67,7 @@ const SliderSection: React.FC<SliderSectionProps> = () => {
                 src={image}
                 className="image-warper h-full w-full rounded-lg object-cover shadow-lg  shadow-secondary"
                 alt=""
-              />{" "}
+              />
             </div>
           ))}
         </div>

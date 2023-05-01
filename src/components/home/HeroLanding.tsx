@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import GsapAnimation from "@/utils/Animations";
 import { gsap } from "gsap";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
 import MainButton from "../ui/MainButton";
 
 interface HeroLandingProps {}
 // HeroLanding component
 const HeroLanding: React.FC<HeroLandingProps> = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const { data: sessionData } = useSession();
+  const router = useRouter();
   const images = [
     "/images/heroLanding/slide1.webp",
     "/images/heroLanding/slide2.webp",
@@ -36,15 +39,39 @@ const HeroLanding: React.FC<HeroLandingProps> = () => {
             sizes="1000px"
             width={200}
             height={100}
+            onClick={() => {
+              // eslint-disable-next-line @typescript-eslint/no-floating-promises
+              router.push("/");
+            }}
           />
         </div>
-        {!isMobile && (
+        {sessionData?.user ? (
+          <div className=" flex h-auto w-auto items-center space-x-8">
+            <div className="text-4xl ">{`Hello ${
+              sessionData?.user?.name || ""
+            }`}</div>
+            <MainButton
+              style="light"
+              text="Log Out"
+              onClick={() => {
+                // eslint-disable-next-line @typescript-eslint/no-floating-promises
+                signOut();
+              }}
+            />
+          </div>
+        ) : (
           <div className=" flex h-auto w-auto items-center space-x-2">
             {/* sign in */}
-            <MainButton style="dark" text="SIGN IN" />
+            <MainButton
+              style="light"
+              text="SIGN IN"
+              onClick={() => {
+                // eslint-disable-next-line @typescript-eslint/no-floating-promises
+                router.push("/login");
+              }}
+            />
 
             {/* sign up */}
-            <MainButton style="light" text="SIGN UP" />
           </div>
         )}
       </nav>
@@ -66,8 +93,15 @@ const HeroLanding: React.FC<HeroLandingProps> = () => {
         </div>
         <div
           className={`hidden-button z-40  cursor-pointer rounded-md bg-secondary px-8 py-4 text-xl font-bold  text-white  opacity-0 `}
+          onClick={() => {
+            if (sessionData?.user) {
+              router.push("/movies");
+            } else {
+              router.push("/login");
+            }
+          }}
         >
-          SIGN UP NOW
+          {sessionData?.user ? " WATCHING UP NOW!" : "  SIGN UP NOW"}
         </div>
       </section>
       {/* Images */}
@@ -80,7 +114,13 @@ const HeroLanding: React.FC<HeroLandingProps> = () => {
               index % 2 === 0 && "translate-y-[60px]"
             }`}
           >
-            <img src={image} alt="" className="h-full w-full  object-cover" />
+            <Image
+              src={image}
+              alt=""
+              className="h-full w-full  object-cover"
+              width={1000}
+              height={1000}
+            />
           </div>
         ))}
       </div>
