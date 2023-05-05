@@ -91,6 +91,55 @@ const GsapAnimation = {
     });
     tl.to(el.current, { x: 0, duration: duration, ease: "none" });
   },
+  MainHeroBannerAnimation: () => {
+    const tl = gsap.timeline();
+    tl.from(".main-hero-bg", {
+      duration: 1,
+      z: 100,
+      opacity: 0,
+      scale: 0,
+      ease: "power4.out",
+    })
+      .from(".clip-path-box", {
+        duration: 2,
+        opacity: 0,
+        x: "-100%",
+        ease: "power4.out",
+      })
+      .from(".main-hero-center-box .main-hero-child", {
+        stagger: 0.2,
+        duration: 1,
+        y: "100%",
+        opacity: 0,
+        ease: "power4.out",
+      })
+      .from(".main-hero-child-line", {
+        duration: 1,
+        width: 0,
+        ease: "power4.out",
+      })
+      .to(".hero-line-sub", {
+        duration: 12,
+        width: "100%",
+        ease: "linear",
+      });
+  },
+  LoginAnimation: () => {
+    const timeline = gsap.timeline();
+    timeline
+      .from(".login-image", {
+        duration: 0.7,
+        opacity: 0,
+        stagger: 0.6,
+        x: -100,
+        ease: "elastic.out(1, 0.5)",
+      })
+      .from(".login-bg-warper", {
+        duration: 1.5,
+        opacity: 0,
+        ease: "power4.out",
+      });
+  },
 };
 
 export default GsapAnimation;

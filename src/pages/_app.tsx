@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { api } from "@/utils/api";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { AnimatePresence } from "framer-motion";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
@@ -16,7 +17,6 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   // smooth scroll
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     AOS.init({
       duration: 2000,
       delay: 100,
@@ -35,7 +35,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
   }, []);
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <AnimatePresence initial={false}>
+        <Component {...pageProps} />
+      </AnimatePresence>
     </SessionProvider>
   );
 };
