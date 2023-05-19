@@ -7,12 +7,13 @@ import {
     SliderSection,
 } from "@/components/homePage";
 import { motion } from "framer-motion";
+import Head from "next/head";
 import React from "react";
 interface indexProps {}
 const Home: React.FC<indexProps> = () => {
     return (
-        <motion.div
-            className=" h-auto w-full  space-y-[10vh] overflow-x-hidden bg-primary md:space-y-[20vh]"
+        <motion.main
+            className=" h-auto w-full  space-y-[10vh] overflow-x-hidden bg-primary md:space-y-[20vh] "
             // Moving variants to independent file
             initial={{
                 opacity: 0,
@@ -31,6 +32,9 @@ const Home: React.FC<indexProps> = () => {
                 ease: "easeInOut",
             }}
         >
+            <Head>
+                <title>StreamDot</title>
+            </Head>
             <HeroLanding />
             <SliderSection />
             <ContentPreview />
@@ -40,7 +44,7 @@ const Home: React.FC<indexProps> = () => {
             <div className=" flex justify-center pb-12 text-4xl">
                 Idea From @Danish Iqbal
             </div>
-        </motion.div>
+        </motion.main>
     );
 };
 export default Home;

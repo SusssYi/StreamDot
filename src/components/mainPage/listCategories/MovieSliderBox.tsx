@@ -2,10 +2,15 @@ import { api } from "@/utils/api";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
-import { LoadingSpinCircle, SinglePosterBoxSmall } from "../uiComponents";
-interface UpcomingComponentsProps {}
-const UpcomingComponents: React.FC<UpcomingComponentsProps> = () => {
-    const { data, isLoading } = api.tmdb.getUpcomingMovies.useQuery();
+import { LoadingSpinCircle, SinglePosterBoxSmall } from "../../ui";
+interface IMovieSliderProps {
+    movieUrl: string;
+    title: string;
+}
+const MovieSliderBox: React.FC<IMovieSliderProps> = ({ movieUrl, title }) => {
+    const { data, isLoading } = api.tmdb.getMovieByUrl.useQuery({
+        url: movieUrl,
+    });
     const [x, setX] = useState(0);
 
     if (isLoading) {
@@ -20,7 +25,7 @@ const UpcomingComponents: React.FC<UpcomingComponentsProps> = () => {
         <div className="relative flex h-auto w-auto flex-col space-y-8">
             {/* title */}
             <div>
-                <h1 className="text-2xl  font-bold">Latest & Trending</h1>
+                <h1 className="text-2xl  font-bold">{title}</h1>
             </div>
             {/* sliderBox */}
             <motion.div
@@ -39,6 +44,7 @@ const UpcomingComponents: React.FC<UpcomingComponentsProps> = () => {
                         posterImage={movie.poster_path}
                         overview={movie.overview}
                         movieId={movie.id}
+                        category="movie"
                     />
                 ))}
             </motion.div>
@@ -74,4 +80,4 @@ const UpcomingComponents: React.FC<UpcomingComponentsProps> = () => {
         </div>
     );
 };
-export default UpcomingComponents;
+export default MovieSliderBox;

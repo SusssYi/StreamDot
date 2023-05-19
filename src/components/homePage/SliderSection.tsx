@@ -3,7 +3,7 @@ import postMock from "@/utils/postMock";
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import SecondaryTitle from "../uiComponents/SecondaryTitle";
+import SecondaryTitle from "../ui/SecondaryTitle";
 interface SliderSectionProps {}
 const SliderSection: React.FC<SliderSectionProps> = () => {
     const [currentNumber, setCurrentNumber] = useState(0);
@@ -35,7 +35,8 @@ const SliderSection: React.FC<SliderSectionProps> = () => {
         return () => clearInterval(interval);
     }, []);
     return (
-        <div
+        <section
+            title="SliderSection"
             className=" flex h-auto min-h-[100vh] w-full flex-col items-center "
             data-aos="fade-up"
         >
@@ -73,7 +74,7 @@ const SliderSection: React.FC<SliderSectionProps> = () => {
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 export default SliderSection;

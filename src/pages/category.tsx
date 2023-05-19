@@ -1,11 +1,14 @@
 import { MainHeroBanner, MovieCategories } from "@/components/mainPage/";
+import Genres from "@/components/mainPage/Genres";
+import TvCategories from "@/components/mainPage/TvCategories";
 import { motion } from "framer-motion";
+import Head from "next/head";
 import React from "react";
 interface moviesProps {}
 const movies: React.FC<moviesProps> = () => {
     return (
-        <motion.div
-            className=" h-auto min-h-[100vh]  w-full space-y-[10vh] overflow-x-hidden bg-primary md:space-y-[20vh]"
+        <motion.main
+            className=" h-auto min-h-[100vh]  w-full space-y-[10vh] overflow-x-hidden bg-primary md:space-y-[10vh]"
             initial={{
                 opacity: 0,
                 x: 100,
@@ -23,11 +26,16 @@ const movies: React.FC<moviesProps> = () => {
                 ease: "easeInOut",
             }}
         >
+            <Head>
+                <title>StreamDot</title>
+            </Head>
             <MainHeroBanner />
             {/* TODO: Finish ContinueWatch */}
-            {/* <ContinueWatch /> */}
             <MovieCategories />
-        </motion.div>
+            <TvCategories />
+            {/* Genres */}
+            <Genres />
+        </motion.main>
     );
 };
 export default movies;

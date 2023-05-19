@@ -63,7 +63,7 @@ model Movie {
     title        String  @unique
     backdropPath String?
     posterPath   String?
-    rating       Int?
+    rating       Float?
     releaseDate  String?
     movieId      String
     userId       String

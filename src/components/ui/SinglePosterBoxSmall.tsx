@@ -1,12 +1,13 @@
 import { postImageBaseUrl } from "@/utils/TMDBApiHelper";
-import { api } from "@/utils/api";
 import framerMotionVariants from "@/utils/framerMotionVariants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { BsFillPlayFill, BsPlus } from "react-icons/bs";
+import { BsFillPlayFill } from "react-icons/bs";
+import AddButton from "./AddButton";
 
+//
 export const SinglePosterBoxSmall = ({
     title,
     releaseDate,
@@ -14,6 +15,7 @@ export const SinglePosterBoxSmall = ({
     overview,
     index,
     movieId,
+    category,
 }: {
     title: string;
     releaseDate: string;
@@ -21,14 +23,10 @@ export const SinglePosterBoxSmall = ({
     overview: string;
     index: number;
     movieId: number;
+    category: "movie" | "tv";
 }) => {
     const router = useRouter();
     const [showDetail, setShowDetail] = useState(false);
-    // const { mutate, data } = api.watchList.addToWatchList.useMutation();
-    const { data } = api.watchList.getWatchList.useQuery();
-
-    console.log(data);
-
     return (
         <motion.div
             className="z-10 flex h-auto w-auto  rounded-md shadow-md shadow-secondary"
@@ -86,27 +84,22 @@ export const SinglePosterBoxSmall = ({
                                     className="cursor-pointer rounded-lg bg-secondary px-2 py-1"
                                     onClick={() => {
                                         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-                                        router.push(`/movies/${movieId}`);
+                                        router.push(
+                                            category == "movie"
+                                                ? `/movies/${movieId}`
+                                                : `/tv/${movieId}`
+                                        );
                                     }}
                                 >
                                     <BsFillPlayFill />
                                 </div>
                                 {/* TODO: add Movie to watchList */}
-                                <div
-                                    className="cursor-pointer  p-1 text-lg text-white shadow-md  shadow-secondary ring-1 ring-secondary"
-                                    onClick={() => {
-                                        mutate({
-                                            movieId: `${movieId}`,
-                                            title: `${title}`,
-                                            posterPath: `${posterImage}`,
-                                            backdropPath: `${posterImage}`,
-                                            rating: 5,
-                                            releaseDate: `${releaseDate}`,
-                                        });
-                                    }}
-                                >
-                                    <BsPlus />
-                                </div>
+                                <AddButton
+                                    movieId={movieId}
+                                    posterImage={posterImage}
+                                    releaseDate={releaseDate}
+                                    title={title}
+                                />
                             </div>
                         </motion.div>
                     </motion.div>

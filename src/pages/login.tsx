@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { IntegratedSVG } from "@/components/uiComponents/";
+import { IntegratedSVG } from "@/components/ui";
 import GsapAnimation from "@/utils/gsapAnimations";
 import { gsap } from "gsap";
 import { signIn, useSession } from "next-auth/react";
@@ -26,9 +26,12 @@ const Login: React.FC<loginProps> = () => {
         return () => ctx.revert();
     }, []);
     return (
-        <div className=" relative  flex  h-auto w-full flex-col-reverse overflow-x-hidden overflow-y-hidden bg-[#000002]   lg:h-screen  lg:flex-row">
+        <main className=" relative  flex  h-auto w-full flex-col-reverse overflow-x-hidden overflow-y-hidden bg-[#000002]   lg:h-screen  lg:flex-row">
             {/* Right */}
-            <div className="flex flex-1  flex-col px-12 py-4">
+            <section
+                title="login-right-box"
+                className="flex flex-1  flex-col px-12 py-4"
+            >
                 <nav className="flex  w-full  flex-1 flex-col items-center justify-between md:flex-row">
                     <div className=" hover:scale-70  z-[40] cursor-pointer  text-2xl font-bold uppercase text-white transition-all duration-300  ">
                         <Image
@@ -78,9 +81,12 @@ const Login: React.FC<loginProps> = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
             {/* Left */}
-            <div className="relative grid  w-full flex-1 grid-rows-4 shadow-lg shadow-secondary lg:h-full lg:grid-cols-4 lg:grid-rows-1">
+            <section
+                title="login-left-box"
+                className="relative grid  w-full flex-1 grid-rows-4 shadow-lg shadow-secondary lg:h-full lg:grid-cols-4 lg:grid-rows-1"
+            >
                 <div className="login-bg-warper absolute left-0 top-0 z-50 h-full w-full bg-secondary/20"></div>
                 <div className="login-image  row-span-1 lg:col-span-1 ">
                     <Image
@@ -109,8 +115,8 @@ const Login: React.FC<loginProps> = () => {
                         height={1000}
                     />
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 };
 export default Login;

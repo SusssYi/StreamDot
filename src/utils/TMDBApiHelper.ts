@@ -15,8 +15,23 @@ const movieApis = {
     movieVideos: (movie_id: string) => `${baseUrl}/movie/${movie_id}/videos`,
     getMovieDetails: (movie_id: string) => `${baseUrl}/movie/${movie_id}`,
     latest: `${baseUrl}/movie/latest`,
+    getCredits: (movie_id: string) => `${baseUrl}/movie/${movie_id}/credits`,
+    getMovieReviews: (movie_id: string) =>
+        `${baseUrl}/movie/${movie_id}/reviews`,
+    getMovieRecommendations: (movie_id: string) => `
+    ${baseUrl}/movie/${movie_id}/recommendations`,
+    getMovieSimilar: (movie_id: string) =>
+        `${baseUrl}/movie/${movie_id}/similar`,
+    getAnimeGenres: (genre_id: number) =>
+        `${baseUrl}/discover/movie?with_genres=${genre_id}&sort_by=popularity.desc`,
 };
 
+const tvShowApis = {
+    getPoplarTvShows: `${baseUrl}/tv/popular`,
+    getTopRatedTvShows: `${baseUrl}/tv/top_rated`,
+    getTvShowDetails: (tv_id: string) => `${baseUrl}/tv/${tv_id}`,
+    getTvShowVideos: (tv_id: string) => `${baseUrl}/tv/${tv_id}/videos`,
+};
 const tmdbBaseEndPoint = axios.create({
     baseURL: baseUrl,
     params: {
@@ -28,4 +43,11 @@ const tmdbBaseEndPoint = axios.create({
     },
 });
 
-export { baseUrl, imageBaseUrl, movieApis, tmdbBaseEndPoint, postImageBaseUrl };
+export {
+    baseUrl,
+    imageBaseUrl,
+    movieApis,
+    tmdbBaseEndPoint,
+    postImageBaseUrl,
+    tvShowApis,
+};

@@ -1,4 +1,5 @@
-import { OriginalLanguage, type IPopular } from "@/types/popular";
+import { type IPopular } from "@/types/movies";
+import { OriginalLanguage } from "@/types/movies/popular";
 import { imageBaseUrl } from "@/utils/TMDBApiHelper";
 import { api } from "@/utils/api";
 import GsapAnimation from "@/utils/gsapAnimations";
@@ -6,9 +7,12 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { BiPlus, BiSearch } from "react-icons/bi";
-import LoadingSpinCircle from "../uiComponents/LoadingSpinCircle";
-import MainButton from "../uiComponents/MainButton";
+import { toast } from "react-hot-toast";
+import { BiPlus } from "react-icons/bi";
+import Navbar from "../common/Navbar";
+import LoadingSpinCircle from "../ui/LoadingSpinCircle";
+import MainButton from "../ui/MainButton";
+import ContinueWatch from "./ContinueWatch";
 
 interface MainHeroBannerProps {}
 
@@ -30,10 +34,42 @@ const johnWickMock: IPopular["results"][0] = {
     vote_count: 9126,
 };
 const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
-    const { data, isLoading } = api.tmdb.popular.useQuery();
+    const { data, isLoading, error } = api.tmdb.popular.useQuery();
+
+    const { mutate } = api.watchList.addToWatchList.useMutation({
+        onSuccess: async () => {
+            toast.success("movie  success add to watchList! ", {
+                style: {
+                    border: "1px solid #411fd1",
+                    padding: "16px",
+                    color: "#411fd1",
+                },
+                iconTheme: {
+                    primary: "#411fd1",
+                    secondary: "#FFFAEE",
+                },
+            });
+            await utils.watchList.getWatchList.invalidate();
+        },
+        onError: () => {
+            toast.error("movie  failed add to watchList!", {
+                style: {
+                    border: "1px solid #e3342f",
+                    padding: "16px",
+                    color: "#e3342f",
+                },
+                iconTheme: {
+                    primary: "#e3342f",
+                    secondary: "#FFFAEE",
+                },
+            });
+        },
+    });
 
     const [currentMovie, setCurrentMovie] =
         useState<IPopular["results"][0]>(johnWickMock);
+
+    const utils = api.useContext();
 
     const router = useRouter();
 
@@ -54,14 +90,24 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
     useEffect(() => {
         if (!data) return;
         const timer = setInterval(() => {
-            const randomIndex = Math.floor(Math.random() * data.length);
-            setCurrentMovie(data[randomIndex] ?? johnWickMock);
+            const randomIndex = Math.floor(Math.random() * data?.length);
+            setCurrentMovie(
+                (data[randomIndex] as IPopular["results"][0]) ?? johnWickMock
+            );
         }, 19000);
 
         return () => {
             clearInterval(timer);
         };
     }, [data]);
+
+    if (error) {
+        return (
+            <div className="flex items-center justify-center font-Oswald text-2xl font-bold text-red-500">
+                {error.message}
+            </div>
+        );
+    }
 
     if (isLoading) {
         return <LoadingSpinCircle />;
@@ -72,50 +118,17 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
     }
 
     return (
-        <div className="relative flex h-[100vh] w-full flex-col">
-            {/*  Nav */}
-            <nav className=" z-[40] flex flex-col items-center justify-between   md:flex-row">
-                {/* left */}
-                <div className="flex items-center">
-                    <div className=" hover:scale-70  z-[40] cursor-pointer  text-2xl font-bold uppercase text-white transition-all duration-300  ">
-                        <div className=" contents">
-                            <Image
-                                className=" h-auto w-auto "
-                                src="/images/logo2.png"
-                                alt=""
-                                priority
-                                width={200}
-                                height={100}
-                                onClick={() => {
-                                    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-                                    router.push("/");
-                                }}
-                            />
-                        </div>
-                    </div>
-                    <div className=" flex space-x-16 text-xl font-bold text-white ">
-                        <ListElement text="HOME" />
-                        <ListElement text="movies" />
-                        <ListElement text="series" />
-                    </div>
-                </div>
-                {/* right */}
-                <div className=" flex space-x-8 px-12">
-                    {/* TODO:Add Search feature */}
-                    <div className="text-2xl font-bold">
-                        <BiSearch />
-                    </div>
-                    <ListElement text="watchList" />
-                    {/* TODO:Add Avatar PIcks */}
-                    <ListElement text="Avatar" />
-                </div>
-            </nav>
+        <section
+            title="MainHeroBanner"
+            className="relative flex h-[100vh] w-full flex-col"
+        >
+            {/* nav */}
+            <Navbar />
             {/* backgroundImage */}
             <div className="   absolute left-0 top-0 h-full w-full">
                 {data && (
                     <Image
-                        width={1500}
-                        height={1080}
+                        fill
                         quality={30}
                         priority
                         src={`${imageBaseUrl}${
@@ -130,7 +143,7 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
             {/* ShadowMarker */}
             <div className="clip-path-box absolute left-0 top-0 z-10 h-full w-full "></div>
             {/* TODO:switchableBox */}
-            <div className="main-hero-center-box z-40 flex h-auto w-full flex-1  flex-col justify-center space-y-8 px-8 text-white">
+            <div className="main-hero-center-box z-20 flex h-auto w-full flex-1  flex-col justify-center space-y-8 px-8 text-white">
                 {/* Top Box */}
                 <div className="main-hero-child flex space-x-6">
                     <div className="rounded-md px-2 py-1 text-xl ring-1 ring-secondary">
@@ -175,21 +188,27 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
                             router.push(`/movies/${currentMovie.id}`);
                         }}
                     />
-                    <div className=" main-hero-child flex items-center justify-center p-5 text-3xl ring-2  ring-secondary">
+                    <div
+                        className=" main-hero-child flex cursor-pointer items-center justify-center p-5 text-3xl ring-2  ring-secondary"
+                        onClick={() => {
+                            mutate({
+                                movieId: `${currentMovie.id}`,
+                                backdropPath: currentMovie.backdrop_path,
+                                title: currentMovie.title,
+                                posterPath: currentMovie.poster_path,
+                                releaseDate: currentMovie.release_date,
+                                rating: currentMovie.vote_average,
+                            });
+                        }}
+                    >
                         <BiPlus />
                     </div>
                 </div>
             </div>
-        </div>
+            {/* continue Watching  */}
+
+            <ContinueWatch data={data} />
+        </section>
     );
 };
 export default MainHeroBanner;
-
-// ListElement for Nav Links
-const ListElement = ({ text }: { text: string }) => {
-    return (
-        <div className=" cursor-pointer uppercase drop-shadow-lg  transition-all  duration-200 hover:-translate-y-2 hover:scale-110 hover:drop-shadow-2xl">
-            {text}
-        </div>
-    );
-};

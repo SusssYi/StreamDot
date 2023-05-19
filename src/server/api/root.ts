@@ -1,5 +1,4 @@
 import { createTRPCRouter } from "@/server/api/trpc";
-import { historyRouter } from "./routers/historyApi";
 import { tmdbRouter } from "./routers/tmdbApi";
 import { watchListRouter } from "./routers/watchListApi";
 
@@ -10,7 +9,6 @@ import { watchListRouter } from "./routers/watchListApi";
  */
 export const appRouter = createTRPCRouter({
     tmdb: tmdbRouter,
-    history: historyRouter,
     watchList: watchListRouter,
 });
 

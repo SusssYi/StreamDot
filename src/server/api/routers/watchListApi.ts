@@ -49,4 +49,23 @@ export const watchListRouter = createTRPCRouter({
         });
         return movies;
     }),
+
+    deleteFromWatchList: protectedProcedure
+        .input(
+            z.object({
+                movieId: z.string(),
+            })
+        )
+        .mutation(async ({ ctx, input }) => {
+            const {
+                user: { id },
+            } = ctx.session;
+            const movie = await ctx.prisma.movie.deleteMany({
+                where: {
+                    movieId: input.movieId,
+                    userId: id,
+                },
+            });
+            return movie;
+        }),
 });

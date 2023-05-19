@@ -1,6 +1,6 @@
 import ContinueWatch from "./ContinueWatch";
 import MainHeroBanner from "./MainHeroBanner";
 import MovieCategories from "./MovieCategories";
-import UpcomingComponents from "./UpcomingComponents";
+import UpcomingComponents from "./listCategories/MovieSliderBox";
 
 export { ContinueWatch, MainHeroBanner, MovieCategories, UpcomingComponents };

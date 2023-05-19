@@ -5,7 +5,7 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import MainButton from "../uiComponents/MainButton";
+import MainButton from "../ui/MainButton";
 
 interface HeroLandingProps {}
 // HeroLanding component
@@ -30,7 +30,10 @@ const HeroLanding: React.FC<HeroLandingProps> = () => {
         return () => ctx.revert();
     }, []);
     return (
-        <div className=" relative h-screen w-full overflow-y-hidden bg-[#000002] px-12 py-4">
+        <section
+            title="heroLanding"
+            className=" relative h-screen w-full overflow-y-hidden bg-[#000002] px-12 py-4"
+        >
             {/* Nav */}
             <nav className=" flex flex-col items-center justify-between md:flex-row">
                 <div className=" hover:scale-70  z-[40] cursor-pointer  text-2xl font-bold uppercase text-white transition-all duration-300  ">
@@ -98,7 +101,7 @@ const HeroLanding: React.FC<HeroLandingProps> = () => {
                     className={`hidden-button z-40  cursor-pointer rounded-md bg-secondary px-8 py-4 text-xl font-bold  text-white  opacity-0 `}
                     onClick={() => {
                         if (sessionData?.user) {
-                            router.push("/movies");
+                            router.push("/category");
                         } else {
                             router.push("/login");
                         }
@@ -117,7 +120,10 @@ const HeroLanding: React.FC<HeroLandingProps> = () => {
                             index % 2 === 0 && "translate-y-[60px]"
                         }`}
                     >
-                        <img
+                        <Image
+                            priority
+                            width={1000}
+                            height={1000}
                             src={image}
                             alt=""
                             className="h-full w-full  object-cover"
@@ -125,7 +131,7 @@ const HeroLanding: React.FC<HeroLandingProps> = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </section>
     );
 };
 export default HeroLanding;

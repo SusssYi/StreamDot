@@ -3,14 +3,15 @@ import GsapAnimation from "@/utils/gsapAnimations";
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
-import SecondaryTitle from "../uiComponents/SecondaryTitle";
+import SecondaryTitle from "../ui/SecondaryTitle";
 interface HorizontalSliderProps {}
 const HorizontalSlider: React.FC<HorizontalSliderProps> = () => {
     const topSlider = SliderMocks[0];
     const bottomSlider = SliderMocks[1];
 
     return (
-        <div
+        <section
+            title="HorizontalSlider"
             className=" flex h-auto min-h-[100vh] w-full flex-col items-center py-24"
             data-aos="fade-up"
         >
@@ -27,7 +28,7 @@ const HorizontalSlider: React.FC<HorizontalSliderProps> = () => {
             </div>
 
             <div></div>
-        </div>
+        </section>
     );
 };
 export default HorizontalSlider;
