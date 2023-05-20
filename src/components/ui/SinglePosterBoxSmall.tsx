@@ -43,6 +43,7 @@ export const SinglePosterBoxSmall = ({
                     width={500}
                     height={500}
                     alt=""
+                    placeholder="blur"
                     src={`${postImageBaseUrl}${posterImage ?? ""}`}
                     className="h-full w-full rounded-md object-cover"
                 />
