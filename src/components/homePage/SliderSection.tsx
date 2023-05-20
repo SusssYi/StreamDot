@@ -54,6 +54,7 @@ const SliderSection: React.FC<SliderSectionProps> = () => {
                             width={400}
                             height={600}
                             className=" logo  h-[600px] w-[400px] object-contain"
+                            priority
                         />
                     </div>
                 </div>
@@ -65,7 +66,10 @@ const SliderSection: React.FC<SliderSectionProps> = () => {
                             className="  col-span-1 min-h-[200px] w-full origin-center"
                         >
                             {/* FIXME:use Next Image to instead */}
-                            <img
+                            <Image
+                                width={500}
+                                height={500}
+                                priority
                                 src={image}
                                 className="image-warper h-full w-full rounded-lg object-cover shadow-lg  shadow-secondary"
                                 alt=""

@@ -90,6 +90,7 @@ const Login: React.FC<loginProps> = () => {
                 <div className="login-bg-warper absolute left-0 top-0 z-50 h-full w-full bg-secondary/20"></div>
                 <div className="login-image  row-span-1 lg:col-span-1 ">
                     <Image
+                        priority
                         src="/images/login/img1.webp"
                         alt=""
                         className="h-full w-full object-cover"
@@ -99,6 +100,7 @@ const Login: React.FC<loginProps> = () => {
                 </div>
                 <div className="login-image row-span-2 lg:col-span-2">
                     <Image
+                        priority
                         src="/images/login/img2.webp"
                         alt=""
                         className="h-full w-full object-cover shadow-md shadow-black"
@@ -108,6 +110,7 @@ const Login: React.FC<loginProps> = () => {
                 </div>
                 <div className="login-image row-span-1 lg:col-span-1">
                     <Image
+                        priority
                         src="/images/login/img3.webp"
                         alt=""
                         className="h-full w-full object-cover"
