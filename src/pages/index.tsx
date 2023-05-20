@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import React from "react";
 import {
     ContentPreview,
@@ -32,9 +32,27 @@ const Home: React.FC<indexProps> = () => {
                 ease: "easeInOut",
             }}
         >
-            <Head>
-                <title>StreamDot</title>
-            </Head>
+            <NextSeo
+                title="StreamDot"
+                description="StreamDot is a cutting-edge video streaming platform that offers a seamless viewing experience for users worldwide. With our extensive library of high-quality videos, you can explore a wide range of content across various genres, including movies, TV shows, documentaries, and more. Our advanced streaming technology ensures smooth playback and exceptional video quality on any device. Discover and enjoy your favorite videos with StreamDot, the ultimate destination for immersive entertainment. Sign up today and unlock a world of captivating visual content at your fingertips."
+                canonical="https://stream.suyis.me"
+                openGraph={{
+                    url: "https://stream.suyis.me",
+                    title: "StreamDot",
+                    description:
+                        "StreamDot is a cutting-edge video streaming platform that offers a seamless viewing experience for users worldwide. With our extensive library of high-quality videos, you can explore a wide range of content across various genres, including movies, TV shows, documentaries, and more. Our advanced streaming technology ensures smooth playback and exceptional video quality on any device. Discover and enjoy your favorite videos with StreamDot, the ultimate destination for immersive entertainment. Sign up today and unlock a world of captivating visual content at your fingertips.",
+                    images: [
+                        {
+                            url: "https://image.tmdb.org/t/p/w500/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg",
+                            width: 800,
+                            height: 600,
+                            alt: "Og Image Alt",
+                            type: "image/jpeg",
+                        },
+                    ],
+                    siteName: "StreamDot",
+                }}
+            />
             <HeroLanding />
             <SliderSection />
             <ContentPreview />

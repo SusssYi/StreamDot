@@ -10,8 +10,6 @@ const MovieReviews: React.FC<MovieReviewsProps> = ({ movieId }) => {
         id: movieId,
     });
 
-    console.log(data);
-
     if (isLoading) {
         return <LoadingSpinCircle />;
     }

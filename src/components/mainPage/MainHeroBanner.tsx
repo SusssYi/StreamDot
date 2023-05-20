@@ -206,8 +206,7 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
                 </div>
             </div>
             {/* continue Watching  */}
-
-            <ContinueWatch data={data} />
+            {data.length !== 0 && <ContinueWatch data={data} />}
         </section>
     );
 };

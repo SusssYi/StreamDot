@@ -65,7 +65,7 @@ model Movie {
     posterPath   String?
     rating       Float?
     releaseDate  String?
-    movieId      String
+    movieId      String  @unique
     userId       String
     user         User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
