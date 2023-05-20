@@ -5,6 +5,7 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { toast } from "react-hot-toast";
 import { IntegratedSVG } from "src/components/ui";
 import GsapAnimation from "src/utils/gsapAnimations";
 
@@ -56,7 +57,9 @@ const Login: React.FC<loginProps> = () => {
                         <div
                             className="group flex   cursor-pointer items-center justify-center  space-x-8 rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
                             onClick={() => {
-                                signIn("google");
+                                toast.error(
+                                    "This button now temporarily not available!"
+                                );
                             }}
                         >
                             <div className="transition-all duration-200 group-hover:animate-bounce  ">
