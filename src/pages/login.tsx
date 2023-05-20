@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { gsap } from "gsap";
 import { signIn, useSession } from "next-auth/react";
+import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
@@ -27,6 +28,7 @@ const Login: React.FC<loginProps> = () => {
     }, []);
     return (
         <main className=" relative  flex  h-auto w-full flex-col-reverse overflow-x-hidden overflow-y-hidden bg-[#000002]   lg:h-screen  lg:flex-row">
+            <NextSeo title="login" />
             {/* Right */}
             <section
                 title="login-right-box"

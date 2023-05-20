@@ -136,6 +136,7 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
                             johnWickMock.backdrop_path
                         }`}
                         placeholder="blur"
+                        blurDataURL="/images/login/img3.webp"
                         alt={currentMovie?.title ?? johnWickMock.title}
                         className="main-hero-bg h-full w-full  object-cover"
                     />

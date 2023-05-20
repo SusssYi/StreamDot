@@ -44,6 +44,7 @@ export const SinglePosterBoxSmall = ({
                     height={500}
                     alt=""
                     placeholder="blur"
+                    blurDataURL="/images/login/img3.webp"
                     src={`${postImageBaseUrl}${posterImage ?? ""}`}
                     className="h-full w-full rounded-md object-cover"
                 />

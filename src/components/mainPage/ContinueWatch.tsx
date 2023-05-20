@@ -27,10 +27,10 @@ const ContinueWatch: React.FC<ContinueWatchProps> = ({ data }) => {
                                         movie.poster_path ?? ""
                                     } `}
                                     placeholder={"blur"}
+                                    blurDataURL="/images/login/img3.webp"
                                     alt={movie.title}
                                     width={80}
                                     height={80}
-                                    priority
                                     className="h-full w-full rounded-md object-cover transition-all duration-500 ease-in-out group-hover:scale-110"
                                 />
                             </div>

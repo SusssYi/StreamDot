@@ -34,6 +34,12 @@ const Home: React.FC<indexProps> = () => {
         >
             <NextSeo
                 title="StreamDot"
+                additionalLinkTags={[
+                    {
+                        rel: "icon",
+                        href: "/favicon.ico",
+                    },
+                ]}
                 description="StreamDot is a cutting-edge video streaming platform that offers a seamless viewing experience for users worldwide. With our extensive library of high-quality videos, you can explore a wide range of content across various genres, including movies, TV shows, documentaries, and more. Our advanced streaming technology ensures smooth playback and exceptional video quality on any device. Discover and enjoy your favorite videos with StreamDot, the ultimate destination for immersive entertainment. Sign up today and unlock a world of captivating visual content at your fingertips."
                 canonical="https://stream.suyis.me"
                 openGraph={{
