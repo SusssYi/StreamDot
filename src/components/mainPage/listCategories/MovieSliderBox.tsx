@@ -1,7 +1,7 @@
-import { api } from "@/utils/api";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
+import { api } from "src/utils/api";
 import { LoadingSpinCircle, SinglePosterBoxSmall } from "../../ui";
 interface IMovieSliderProps {
     movieUrl: string;

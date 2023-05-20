@@ -1,7 +1,7 @@
-import { api } from "@/utils/api";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { BsPlus } from "react-icons/bs";
+import { api } from "src/utils/api";
 
 interface AddButtonProps {
     movieId: string | number;

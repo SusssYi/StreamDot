@@ -1,6 +1,6 @@
 import React from "react";
 
-import { movieApis } from "@/utils/TMDBApiHelper";
+import { movieApis } from "src/utils/TMDBApiHelper";
 import MovieSliderBox from "./listCategories/MovieSliderBox";
 
 interface MovieCategoriesProps {}

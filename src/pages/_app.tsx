@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import "@/styles/globals.css";
-import { api } from "@/utils/api";
 import Lenis from "@studio-freight/lenis";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -9,6 +7,8 @@ import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+import { api } from "src/utils/api";
+import "../styles/globals.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
     Component,

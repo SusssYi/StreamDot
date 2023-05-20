@@ -1,10 +1,10 @@
-import { postImageBaseUrl } from "@/utils/TMDBApiHelper";
-import framerMotionVariants from "@/utils/framerMotionVariants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { BsFillPlayFill } from "react-icons/bs";
+import { postImageBaseUrl } from "src/utils/TMDBApiHelper";
+import framerMotionVariants from "src/utils/framerMotionVariants";
 import AddButton from "./AddButton";
 
 //

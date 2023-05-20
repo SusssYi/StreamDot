@@ -1,9 +1,9 @@
-import { MainHeroBanner, MovieCategories } from "@/components/mainPage/";
-import Genres from "@/components/mainPage/Genres";
-import TvCategories from "@/components/mainPage/TvCategories";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import React from "react";
+import { MainHeroBanner, MovieCategories } from "src/components/mainPage";
+import Genres from "src/components/mainPage/Genres";
+import TvCategories from "src/components/mainPage/TvCategories";
 interface moviesProps {}
 const movies: React.FC<moviesProps> = () => {
     return (

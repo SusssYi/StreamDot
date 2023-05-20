@@ -1,6 +1,6 @@
-import { createTRPCRouter } from "@/server/api/trpc";
 import { tmdbRouter } from "./routers/tmdbApi";
 import { watchListRouter } from "./routers/watchListApi";
+import { createTRPCRouter } from "./trpc";
 
 /**
  * This is the primary router for your server.

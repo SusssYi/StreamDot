@@ -1,5 +1,5 @@
-import FQCMockData from "@/utils/FQAMocks";
 import React from "react";
+import FQCMockData from "src/utils/FQAMocks";
 import ExpandableBox from "../ui/ExpandableBox";
 import SecondaryTitle from "../ui/SecondaryTitle";
 

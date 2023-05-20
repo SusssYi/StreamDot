@@ -1,17 +1,21 @@
+import axios from "axios";
+import { z } from "zod";
 import {
+    type IMovieCredits,
     type IMovieDetail,
     type IMovieReviews,
     type IMovieVideos,
     type INowPlaying,
     type IPopular,
     type IUpcomingMovies,
-} from "@/types/movies";
-import { type IMovieCredits } from "@/types/movies/movieCredits";
-import { OriginalLanguage } from "@/types/movies/popular";
-import { type IPopularTv } from "@/types/tv";
-import { baseUrl, movieApis, tmdbBaseEndPoint } from "@/utils/TMDBApiHelper";
-import axios from "axios";
-import { z } from "zod";
+} from "../../../types/movies";
+import { OriginalLanguage } from "../../../types/movies/popular";
+import { type IPopularTv } from "../../../types/tv";
+import {
+    baseUrl,
+    movieApis,
+    tmdbBaseEndPoint,
+} from "../../../utils/TMDBApiHelper";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
 const johnWickMock = {

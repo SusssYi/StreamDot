@@ -1,7 +1,7 @@
-import { postImageBaseUrl } from "@/utils/TMDBApiHelper";
-import { api } from "@/utils/api";
 import Image from "next/image";
 import React from "react";
+import { postImageBaseUrl } from "src/utils/TMDBApiHelper";
+import { api } from "src/utils/api";
 import { LoadingSpinCircle } from "../ui";
 
 interface CastListProps {

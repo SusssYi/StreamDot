@@ -1,9 +1,9 @@
-import { postImageBaseUrl } from "@/utils/TMDBApiHelper";
-import { api } from "@/utils/api";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { postImageBaseUrl } from "src/utils/TMDBApiHelper";
+import { api } from "src/utils/api";
 import LoadingSpinCircle from "./LoadingSpinCircle";
 
 // ListElement for Nav Links

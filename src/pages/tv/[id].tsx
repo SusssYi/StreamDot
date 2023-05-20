@@ -1,16 +1,16 @@
-import Navbar from "@/components/common/Navbar";
-import MovieSliderBox from "@/components/mainPage/listCategories/MovieSliderBox";
-import LoadingSpinCircle from "@/components/ui/LoadingSpinCircle";
-import { movieApis } from "@/utils/TMDBApiHelper";
-import { api } from "@/utils/api";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { Suspense, useState } from "react";
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
+import Navbar from "src/components/common/Navbar";
+import MovieSliderBox from "src/components/mainPage/listCategories/MovieSliderBox";
+import { LoadingSpinCircle } from "src/components/ui";
+import { movieApis } from "src/utils/TMDBApiHelper";
+import { api } from "src/utils/api";
 interface MovieDetailProps {}
 const TvDetailPage: React.FC<MovieDetailProps> = () => {
-    const { query, push } = useRouter();
+    const { query } = useRouter();
     const [x, setX] = useState(0);
     const { data: videoData, isLoading: videoIsLoading } =
         api.tmdb.getTvShowVideos.useQuery({

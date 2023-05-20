@@ -1,5 +1,5 @@
-import { tvShowApis } from "@/utils/TMDBApiHelper";
 import React from "react";
+import { tvShowApis } from "src/utils/TMDBApiHelper";
 import TvShowSliderBox from "./listCategories/TvSliderBox";
 
 interface TvCategoriesProps {}

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { IntegratedSVG } from "@/components/ui";
-import GsapAnimation from "@/utils/gsapAnimations";
 import { gsap } from "gsap";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { IntegratedSVG } from "src/components/ui";
+import GsapAnimation from "src/utils/gsapAnimations";
 
 interface loginProps {}
 const Login: React.FC<loginProps> = () => {

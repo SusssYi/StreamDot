@@ -1,8 +1,8 @@
-import { type IPopular } from "@/types/movies";
-import { postImageBaseUrl } from "@/utils/TMDBApiHelper";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { type IPopular } from "src/types/movies";
+import { postImageBaseUrl } from "src/utils/TMDBApiHelper";
 
 interface ContinueWatchProps {
     data: IPopular["results"];

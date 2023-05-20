@@ -1,8 +1,8 @@
-import SliderMocks from "@/utils/SliderMocks";
-import GsapAnimation from "@/utils/gsapAnimations";
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
+import SliderMocks from "src/utils/SliderMocks";
+import GsapAnimation from "src/utils/gsapAnimations";
 import SecondaryTitle from "../ui/SecondaryTitle";
 interface HorizontalSliderProps {}
 const HorizontalSlider: React.FC<HorizontalSliderProps> = () => {

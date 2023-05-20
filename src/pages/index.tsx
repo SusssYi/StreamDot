@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import Head from "next/head";
+import React from "react";
 import {
     ContentPreview,
     FQA,
@@ -5,10 +8,7 @@ import {
     HorizontalSlider,
     MainPoster,
     SliderSection,
-} from "@/components/homePage";
-import { motion } from "framer-motion";
-import Head from "next/head";
-import React from "react";
+} from "../components/homePage";
 interface indexProps {}
 const Home: React.FC<indexProps> = () => {
     return (

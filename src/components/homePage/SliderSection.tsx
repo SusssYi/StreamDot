@@ -1,8 +1,8 @@
-import GsapAnimation from "@/utils/gsapAnimations";
-import postMock from "@/utils/postMock";
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import GsapAnimation from "src/utils/gsapAnimations";
+import postMock from "src/utils/postMock";
 import SecondaryTitle from "../ui/SecondaryTitle";
 interface SliderSectionProps {}
 const SliderSection: React.FC<SliderSectionProps> = () => {

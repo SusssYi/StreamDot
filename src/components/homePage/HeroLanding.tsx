@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import GsapAnimation from "@/utils/gsapAnimations";
 import { gsap } from "gsap";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import GsapAnimation from "src/utils/gsapAnimations";
 import MainButton from "../ui/MainButton";
 
 interface HeroLandingProps {}
