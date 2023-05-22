@@ -18,12 +18,13 @@ const MyApp: AppType<{ session: Session | null }> = ({
     useEffect(() => {
         AOS.init({
             duration: 2000,
-            delay: 100,
+            delay: 0,
         });
 
         const lenis = new Lenis({
             lerp: 0.02,
             smoothWheel: true,
+            easing: (t) => t,
         });
 
         function raf(time: number) {
