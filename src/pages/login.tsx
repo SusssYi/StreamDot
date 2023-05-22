@@ -5,7 +5,6 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { toast } from "react-hot-toast";
 import { IntegratedSVG } from "src/components/ui";
 import GsapAnimation from "src/utils/gsapAnimations";
 
@@ -53,13 +52,14 @@ const Login: React.FC<loginProps> = () => {
                 <div className="flex flex-[5] flex-col items-center space-y-24   py-24  ">
                     <div className="font-Oswald text-6xl font-bold">LOG IN</div>
                     <div className="w-auto space-y-24 lg:w-full">
-                        {/* TODO: google login button */}
+                        {/* TODO: google login button  */}
                         <div
                             className="group flex   cursor-pointer items-center justify-center  space-x-8 rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
                             onClick={() => {
-                                toast.error(
-                                    "This button now temporarily not available!"
-                                );
+                                signIn("google", {
+                                    callbackUrl:
+                                        "http://localhost:3000/category",
+                                });
                             }}
                         >
                             <div className="transition-all duration-200 group-hover:animate-bounce  ">
@@ -75,7 +75,8 @@ const Login: React.FC<loginProps> = () => {
                             className="group flex cursor-pointer items-center justify-center space-x-8  rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
                             onClick={() => {
                                 signIn("discord", {
-                                    callbackUrl: "http://localhost:3000/movies",
+                                    callbackUrl:
+                                        "http://localhost:3000/category",
                                 });
                             }}
                         >
