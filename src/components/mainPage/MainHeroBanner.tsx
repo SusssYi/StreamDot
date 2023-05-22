@@ -1,4 +1,5 @@
 import { gsap } from "gsap";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -34,6 +35,7 @@ const johnWickMock: IPopular["results"][0] = {
     vote_count: 9126,
 };
 const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
+    const { data: sessionData } = useSession();
     const { data, isLoading, error } = api.tmdb.popular.useQuery();
 
     const { mutate } = api.watchList.addToWatchList.useMutation({
@@ -193,14 +195,18 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
                     <div
                         className=" main-hero-child flex cursor-pointer items-center justify-center p-5 text-3xl ring-2  ring-secondary"
                         onClick={() => {
-                            mutate({
-                                movieId: `${currentMovie.id}`,
-                                backdropPath: currentMovie.backdrop_path,
-                                title: currentMovie.title,
-                                posterPath: currentMovie.poster_path,
-                                releaseDate: currentMovie.release_date,
-                                rating: currentMovie.vote_average,
-                            });
+                            if (sessionData?.user) {
+                                mutate({
+                                    movieId: `${currentMovie.id}`,
+                                    backdropPath: currentMovie.backdrop_path,
+                                    title: currentMovie.title,
+                                    posterPath: currentMovie.poster_path,
+                                    releaseDate: currentMovie.release_date,
+                                    rating: currentMovie.vote_average,
+                                });
+                            } else {
+                                toast.error("please login first!");
+                            }
                         }}
                     >
                         <BiPlus />

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -22,7 +23,6 @@ const Navbar: React.FC<NavbarProps> = () => {
                         width={125}
                         height={80}
                         onClick={() => {
-                            // eslint-disable-next-line @typescript-eslint/no-floating-promises
                             push("/");
                         }}
                     />
@@ -31,7 +31,6 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <ListElement
                         text="HOME"
                         onClick={() => {
-                            // eslint-disable-next-line @typescript-eslint/no-floating-promises
                             push("/category");
                         }}
                     />
@@ -47,10 +46,17 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </div>
                 <ListElement text="watchList" />
                 {/* TODO:Add Avatar PIcks */}
-                <div className="h-[50px] w-[50px] rounded-full">
+                <div
+                    className="h-[50px] w-[50px] cursor-pointer rounded-full"
+                    onClick={() => {
+                        if (!data?.user) {
+                            push("/login");
+                        }
+                    }}
+                >
                     <img
-                        src={data?.user.image || ""}
-                        alt={data?.user.name || ""}
+                        src={data?.user.image || "/images/login/guest-128.png"}
+                        alt={data?.user.name || "guest"}
                         className="h-full w-full rounded-full object-cover"
                     />
                 </div>

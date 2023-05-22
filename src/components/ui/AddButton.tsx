@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { BsPlus } from "react-icons/bs";
@@ -19,6 +20,7 @@ const AddButton: React.FC<AddButtonProps> = ({
     releaseDate,
     size = 20,
 }) => {
+    const { data } = useSession();
     const utils = api.useContext();
     const { mutate } = api.watchList.addToWatchList.useMutation({
         onSuccess: async () => {
@@ -53,14 +55,18 @@ const AddButton: React.FC<AddButtonProps> = ({
         <div
             className="cursor-pointer  p-1 text-lg text-white shadow-md  shadow-secondary ring-1 ring-secondary"
             onClick={() => {
-                mutate({
-                    movieId: `${movieId}`,
-                    title: `${title}`,
-                    posterPath: `${posterImage}`,
-                    backdropPath: `${posterImage}`,
-                    rating: 5,
-                    releaseDate: `${releaseDate}`,
-                });
+                if (data?.user) {
+                    mutate({
+                        movieId: `${movieId}`,
+                        title: `${title}`,
+                        posterPath: `${posterImage}`,
+                        backdropPath: `${posterImage}`,
+                        rating: 5,
+                        releaseDate: `${releaseDate}`,
+                    });
+                } else {
+                    toast.error("you must login first!", {});
+                }
             }}
         >
             <BsPlus

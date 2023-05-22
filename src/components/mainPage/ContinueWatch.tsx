@@ -26,8 +26,6 @@ const ContinueWatch: React.FC<ContinueWatchProps> = ({ data }) => {
                                     src={`${postImageBaseUrl}${
                                         movie.poster_path ?? ""
                                     } `}
-                                    placeholder={"blur"}
-                                    blurDataURL="/images/login/img3.webp"
                                     alt={movie.title}
                                     width={80}
                                     height={80}

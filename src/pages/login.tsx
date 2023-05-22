@@ -85,6 +85,20 @@ const Login: React.FC<loginProps> = () => {
                             </div>
                             <div>Login With Discord</div>
                         </div>
+                        <div className=" flex w-full justify-center font-Oswald text-4xl font-bold">
+                            OR
+                        </div>
+                        <div
+                            className="group flex cursor-pointer items-center justify-center space-x-8  rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
+                            onClick={() => {
+                                router.push("/category");
+                            }}
+                        >
+                            <div className="transition-all duration-200 group-hover:animate-bounce ">
+                                <IntegratedSVG category="discord" size={40} />
+                            </div>
+                            <div>Keep it with guest</div>
+                        </div>
                     </div>
                 </div>
             </section>
