@@ -7,19 +7,21 @@ import React, { useEffect } from "react";
 import GsapAnimation from "src/utils/gsapAnimations";
 import MainButton from "../ui/MainButton";
 
+const images = [
+    "/images/heroLanding/slide1.webp",
+    "/images/heroLanding/slide2.webp",
+    "/images/heroLanding/slide3.webp",
+    "/images/heroLanding/slide4.webp",
+    "/images/heroLanding/slide5.webp",
+    "/images/heroLanding/slide6.webp",
+];
+
 interface HeroLandingProps {}
 // HeroLanding component
 const HeroLanding: React.FC<HeroLandingProps> = () => {
     const { data: sessionData } = useSession();
     const router = useRouter();
-    const images = [
-        "/images/heroLanding/slide1.webp",
-        "/images/heroLanding/slide2.webp",
-        "/images/heroLanding/slide3.webp",
-        "/images/heroLanding/slide4.webp",
-        "/images/heroLanding/slide5.webp",
-        "/images/heroLanding/slide6.webp",
-    ];
+
     // Animations
     useEffect(() => {
         if (!document) return;

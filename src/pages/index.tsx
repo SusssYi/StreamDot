@@ -32,6 +32,7 @@ const Home: React.FC<indexProps> = () => {
                 ease: "easeInOut",
             }}
         >
+            {/* Seo  */}
             <NextSeo
                 title="StreamDot"
                 additionalLinkTags={[

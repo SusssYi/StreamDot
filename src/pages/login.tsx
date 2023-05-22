@@ -95,7 +95,7 @@ const Login: React.FC<loginProps> = () => {
                             }}
                         >
                             <div className="transition-all duration-200 group-hover:animate-bounce ">
-                                <IntegratedSVG category="discord" size={40} />
+                                <IntegratedSVG category="guest" size={40} />
                             </div>
                             <div>Keep it with guest</div>
                         </div>
@@ -110,32 +110,32 @@ const Login: React.FC<loginProps> = () => {
                 <div className="login-bg-warper absolute left-0 top-0 z-50 h-full w-full bg-secondary/20"></div>
                 <div className="login-image  row-span-1 lg:col-span-1 ">
                     <Image
-                        priority
+                        priority={true}
                         src="/images/login/img1.webp"
                         alt=""
                         className="h-full w-full object-cover"
-                        width={1000}
-                        height={1000}
+                        width={500}
+                        height={500}
                     />
                 </div>
                 <div className="login-image row-span-2 lg:col-span-2">
                     <Image
-                        priority
+                        priority={true}
                         src="/images/login/img2.webp"
                         alt=""
                         className="h-full w-full object-cover shadow-md shadow-black"
-                        width={1000}
-                        height={1000}
+                        width={500}
+                        height={500}
                     />
                 </div>
                 <div className="login-image row-span-1 lg:col-span-1">
                     <Image
-                        priority
+                        priority={true}
                         src="/images/login/img3.webp"
                         alt=""
                         className="h-full w-full object-cover"
-                        width={1000}
-                        height={1000}
+                        width={500}
+                        height={500}
                     />
                 </div>
             </section>

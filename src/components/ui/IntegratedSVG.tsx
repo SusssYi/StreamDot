@@ -3,7 +3,7 @@ import React from "react";
 // Export All the SVGs as React Components
 interface IntegratedSVGSVGProps {
     size: number;
-    category: "computer" | "mobile" | "google" | "discord";
+    category: "computer" | "mobile" | "google" | "discord" | "guest";
 }
 const IntegratedSVG: React.FC<IntegratedSVGSVGProps> = ({ size, category }) => {
     switch (category) {
@@ -153,6 +153,20 @@ const IntegratedSVG: React.FC<IntegratedSVGSVGProps> = ({ size, category }) => {
                             fill-rule="nonzero"
                         ></path>
                     </g>
+                </svg>
+            );
+        }
+        case "guest": {
+            return (
+                <svg
+                    width={size}
+                    height={size}
+                    viewBox="0 0 1024 1024"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="rounded-full bg-white px-2"
+                >
+                    <path d="M737.236281 284.26342c0 139.840928-114.332754 253.224348-255.411942 253.224348-141.079188 0-255.370667-113.38342-255.370667-253.224348 0-139.923478 114.332754-253.306899 255.411942-253.306898 141.079188 0 255.370667 113.38342 255.370667 253.306898z m-255.411942 253.224348c235.145739 0 425.672812 142.4 425.672811 411.845565H56.192802c0-269.445565 190.527072-411.845565 425.672812-411.845565z" />
                 </svg>
             );
         }

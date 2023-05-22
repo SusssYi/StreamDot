@@ -67,8 +67,8 @@ const SliderSection: React.FC<SliderSectionProps> = () => {
                         >
                             {/* FIXME:use Next Image to instead */}
                             <Image
-                                width={500}
-                                height={500}
+                                width={350}
+                                height={350}
                                 priority
                                 src={image}
                                 className="image-warper h-full w-full rounded-lg object-cover shadow-lg  shadow-secondary"
