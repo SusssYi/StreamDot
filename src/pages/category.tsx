@@ -30,10 +30,9 @@ const movies: React.FC<moviesProps> = () => {
                 <title>StreamDot</title>
             </Head>
             <MainHeroBanner />
-            {/* TODO: Finish ContinueWatch */}
+            {/* FIXME: Finish ContinueWatch */}
             <MovieCategories />
             <TvCategories />
-            {/* Genres */}
             <Genres />
         </motion.main>
     );

@@ -11,8 +11,8 @@ const ContinueWatch: React.FC<ContinueWatchProps> = ({ data }) => {
     const currentMovie = data.slice(0, 5);
 
     return (
-        <div className="absolute -bottom-[40px] left-0 z-30 flex h-auto w-full flex-col space-y-8 px-8">
-            <div className=" text-2xl font-bold">Continue Watching</div>
+        <div className="absolute -bottom-[70px] left-0 z-30 flex h-auto w-full flex-col space-y-8 px-8">
+            {/* <div className=" text-2xl font-bold">Continue Watching</div> */}
 
             <div className="grid w-full grid-cols-5 gap-4">
                 {currentMovie.map((movie) => (

@@ -5,6 +5,7 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import { IntegratedSVG } from "src/components/ui";
 import GsapAnimation from "src/utils/gsapAnimations";
 
@@ -27,12 +28,12 @@ const Login: React.FC<loginProps> = () => {
         return () => ctx.revert();
     }, []);
     return (
-        <main className=" relative  flex  h-auto w-full flex-col-reverse overflow-x-hidden overflow-y-hidden bg-[#000002]   lg:h-screen  lg:flex-row">
+        <main className=" relative  flex  h-auto w-full flex-col-reverse  bg-[#000002]   lg:h-screen  lg:flex-row  xl:py-6">
             <NextSeo title="login" />
             {/* Right */}
             <section
                 title="login-right-box"
-                className="flex flex-1  flex-col px-12 py-4"
+                className="flex h-[140vh] flex-1   flex-col  px-12 py-4 md:h-auto"
             >
                 <nav className="flex  w-full  flex-1 flex-col items-center justify-between md:flex-row">
                     <div className=" hover:scale-70  z-[40] cursor-pointer  text-2xl font-bold uppercase text-white transition-all duration-300  ">
@@ -49,11 +50,11 @@ const Login: React.FC<loginProps> = () => {
                         />
                     </div>
                 </nav>
-                <div className="flex flex-[5] flex-col items-center space-y-[4rem]   py-24  ">
+                <div className="flex  h-auto w-full flex-[5] flex-col items-center    space-y-[4rem] ">
                     <div className="bg-gradient-to-r  from-primary to-secondary  bg-clip-text font-Oswald text-4xl font-bold text-transparent shadow-secondary drop-shadow-lg xl:text-6xl">
                         LOG IN
                     </div>
-                    <div className="flex  h-[40vh] flex-col space-y-12 lg:w-full">
+                    <div className="flex  h-auto flex-col space-y-12 lg:w-full">
                         {/* TODO: google login button  */}
                         <SingleLoginButton provider="google" />
                         <div className=" flex w-full justify-center font-Oswald text-4xl font-bold ">
@@ -115,9 +116,10 @@ const SingleLoginButton = ({
     provider: "google" | "discord" | "guest";
 }) => {
     const router = useRouter();
+    const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
     return (
         <div
-            className="group flex flex-1 cursor-pointer items-center justify-center  space-x-8 rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
+            className="group flex  flex-1 cursor-pointer items-center justify-center space-x-8  rounded-2xl px-24 py-4 text-2xl shadow-lg shadow-secondary md:min-h-[10vh] "
             onClick={() => {
                 if (provider === "guest") {
                     router.push("/category");
@@ -131,7 +133,11 @@ const SingleLoginButton = ({
             <div className="transition-all duration-500 ease-in-out group-hover:scale-125  ">
                 <IntegratedSVG category={provider} size={40} />
             </div>
-            <div>Login With {provider}</div>
+            {!isMobile && (
+                <div className="font-Oswald text-xs font-bold uppercase tracking-wider md:text-xl">
+                    Login With {provider}
+                </div>
+            )}
         </div>
     );
 };

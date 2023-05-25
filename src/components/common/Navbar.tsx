@@ -4,12 +4,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import { BiSearch } from "react-icons/bi";
+import { useMediaQuery } from "react-responsive";
 import ListElement from "../ui/ListElement";
 
 interface NavbarProps {}
 const Navbar: React.FC<NavbarProps> = () => {
     const { push } = useRouter();
     const { data } = useSession();
+    const isMobile = useMediaQuery({ query: "(max-width: 840px)" });
     return (
         <nav className=" z-[21] flex w-full flex-col items-center justify-between   md:flex-row">
             {/* left */}
@@ -39,28 +41,35 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </div>
             </div>
             {/* right */}
-            <div className=" flex items-center space-x-8 px-12">
-                {/* TODO:Add Search feature */}
-                <div className="text-2xl font-bold">
-                    <BiSearch />
+            {!isMobile && (
+                <div className=" flex items-center space-x-8 px-12">
+                    {/* TODO:Add Search feature */}
+                    <div className="text-2xl font-bold">
+                        <BiSearch />
+                    </div>
+                    <ListElement text="watchList" />
+                    {/* TODO:Add Avatar PIcks */}
+                    <div
+                        className="h-[50px] w-[50px] cursor-pointer rounded-full"
+                        onClick={() => {
+                            if (!data?.user) {
+                                push("/login");
+                            }
+                        }}
+                    >
+                        <Image
+                            width={50}
+                            height={50}
+                            src={
+                                data?.user.image ||
+                                "/images/login/guest-128.png"
+                            }
+                            alt={data?.user.name || "guest"}
+                            className="h-full w-full rounded-full object-cover"
+                        />
+                    </div>
                 </div>
-                <ListElement text="watchList" />
-                {/* TODO:Add Avatar PIcks */}
-                <div
-                    className="h-[50px] w-[50px] cursor-pointer rounded-full"
-                    onClick={() => {
-                        if (!data?.user) {
-                            push("/login");
-                        }
-                    }}
-                >
-                    <img
-                        src={data?.user.image || "/images/login/guest-128.png"}
-                        alt={data?.user.name || "guest"}
-                        className="h-full w-full rounded-full object-cover"
-                    />
-                </div>
-            </div>
+            )}
         </nav>
     );
 };

@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { BiPlus } from "react-icons/bi";
+import { useMediaQuery } from "react-responsive";
 import { type IPopular } from "src/types/movies";
 import { OriginalLanguage } from "src/types/movies/popular";
 import { imageBaseUrl } from "src/utils/TMDBApiHelper";
@@ -37,6 +38,7 @@ const johnWickMock: IPopular["results"][0] = {
 const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
     const { data: sessionData } = useSession();
     const { data, isLoading, error } = api.tmdb.popular.useQuery();
+    const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
 
     const { mutate } = api.watchList.addToWatchList.useMutation({
         onSuccess: async () => {
@@ -157,11 +159,11 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
                         {currentMovie?.release_date}
                     </div>
                 </div>
-                <div className=" flex max-w-[50%] flex-wrap justify-start space-x-4  text-start font-bold uppercase text-white">
+                <div className=" flex max-w-[50%] flex-wrap justify-start space-x-1 text-start  font-bold uppercase text-white md:space-x-4">
                     {currentMovie?.title.split(" ").map((text, index) => (
                         <span
                             key={index}
-                            className="main-hero-child font-Oswald text-8xl"
+                            className="main-hero-child font-Oswald  text-2xl md:text-5xl xl:text-8xl"
                         >
                             {text}
                         </span>
@@ -171,7 +173,7 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
                 <div className="main-hero-child-line hero-line relative h-[2px] w-[15%] bg-gray-600">
                     <div className="hero-line-sub   absolute h-[2px] w-0 bg-secondary"></div>
                 </div>
-                <div className=" main-hero-child flex items-center space-x-4 text-lg">
+                <div className=" main-hero-child flex items-center space-x-4 text-sm md:text-lg">
                     <div>Crime |</div>
                     <div>Mystery |</div>
                     <div>Thriller |</div>
@@ -214,7 +216,7 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
                 </div>
             </div>
             {/* continue Watching  */}
-            {data.length !== 0 && <ContinueWatch data={data} />}
+            {data.length !== 0 && !isMobile && <ContinueWatch data={data} />}
         </section>
     );
 };
