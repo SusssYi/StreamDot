@@ -49,56 +49,21 @@ const Login: React.FC<loginProps> = () => {
                         />
                     </div>
                 </nav>
-                <div className="flex flex-[5] flex-col items-center space-y-24   py-24  ">
-                    <div className="font-Oswald text-6xl font-bold">LOG IN</div>
-                    <div className="w-auto space-y-24 lg:w-full">
+                <div className="flex flex-[5] flex-col items-center space-y-[4rem]   py-24  ">
+                    <div className="bg-gradient-to-r  from-primary to-secondary  bg-clip-text font-Oswald text-4xl font-bold text-transparent shadow-secondary drop-shadow-lg xl:text-6xl">
+                        LOG IN
+                    </div>
+                    <div className="flex  h-[40vh] flex-col space-y-12 lg:w-full">
                         {/* TODO: google login button  */}
-                        <div
-                            className="group flex   cursor-pointer items-center justify-center  space-x-8 rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
-                            onClick={() => {
-                                signIn("google", {
-                                    callbackUrl:
-                                        "http://localhost:3000/category",
-                                });
-                            }}
-                        >
-                            <div className="transition-all duration-200 group-hover:animate-bounce  ">
-                                <IntegratedSVG category="google" size={40} />
-                            </div>
-                            <div>Login With Google</div>
-                        </div>
-                        <div className=" flex w-full justify-center font-Oswald text-4xl font-bold">
+                        <SingleLoginButton provider="google" />
+                        <div className=" flex w-full justify-center font-Oswald text-4xl font-bold ">
                             OR
                         </div>
-                        {/* TODO: discord login button */}
-                        <div
-                            className="group flex cursor-pointer items-center justify-center space-x-8  rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
-                            onClick={() => {
-                                signIn("discord", {
-                                    callbackUrl:
-                                        "http://localhost:3000/category",
-                                });
-                            }}
-                        >
-                            <div className="transition-all duration-200 group-hover:animate-bounce ">
-                                <IntegratedSVG category="discord" size={40} />
-                            </div>
-                            <div>Login With Discord</div>
-                        </div>
-                        <div className=" flex w-full justify-center font-Oswald text-4xl font-bold">
+                        <SingleLoginButton provider="discord" />
+                        <div className=" flex w-full justify-center font-Oswald text-4xl font-bold text-secondary">
                             OR
                         </div>
-                        <div
-                            className="group flex cursor-pointer items-center justify-center space-x-8  rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
-                            onClick={() => {
-                                router.push("/category");
-                            }}
-                        >
-                            <div className="transition-all duration-200 group-hover:animate-bounce ">
-                                <IntegratedSVG category="guest" size={40} />
-                            </div>
-                            <div>Keep it with guest</div>
-                        </div>
+                        <SingleLoginButton provider="guest" />
                     </div>
                 </div>
             </section>
@@ -143,3 +108,25 @@ const Login: React.FC<loginProps> = () => {
     );
 };
 export default Login;
+
+const SingleLoginButton = ({
+    provider,
+}: {
+    provider: "google" | "discord" | "guest";
+}) => {
+    return (
+        <div
+            className="group flex flex-1 cursor-pointer items-center justify-center  space-x-8 rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
+            onClick={() => {
+                signIn(provider, {
+                    callbackUrl: "http://localhost:3000/category",
+                });
+            }}
+        >
+            <div className="transition-all duration-500 ease-in-out group-hover:scale-125  ">
+                <IntegratedSVG category={provider} size={40} />
+            </div>
+            <div>Login With {provider}</div>
+        </div>
+    );
+};

@@ -8,7 +8,7 @@ interface ContinueWatchProps {
     data: IPopular["results"];
 }
 const ContinueWatch: React.FC<ContinueWatchProps> = ({ data }) => {
-    const currentMovie = data.slice(-5);
+    const currentMovie = data.slice(0, 5);
 
     return (
         <div className="absolute -bottom-[40px] left-0 z-30 flex h-auto w-full flex-col space-y-8 px-8">
