@@ -50,7 +50,7 @@ const Login: React.FC<loginProps> = () => {
                         />
                     </div>
                 </nav>
-                <div className="flex  h-auto w-full flex-[5] flex-col items-center    space-y-[4rem] ">
+                <div className="flex  h-auto w-full flex-[5] flex-col items-center    space-y-[2rem] ">
                     <div className="bg-gradient-to-r  from-primary to-secondary  bg-clip-text font-Oswald text-4xl font-bold text-transparent shadow-secondary drop-shadow-lg xl:text-6xl">
                         LOG IN
                     </div>
@@ -119,7 +119,7 @@ const SingleLoginButton = ({
     const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
     return (
         <div
-            className="group flex  flex-1 cursor-pointer items-center justify-center space-x-8  rounded-2xl px-24 py-4 text-2xl shadow-lg shadow-secondary md:min-h-[10vh] "
+            className="group flex  flex-1 cursor-pointer items-center justify-center space-x-8  rounded-2xl px-24 py-4 text-2xl shadow-lg shadow-secondary md:min-h-[8vh] "
             onClick={() => {
                 if (provider === "guest") {
                     router.push("/category");
