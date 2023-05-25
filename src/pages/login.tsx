@@ -28,7 +28,7 @@ const Login: React.FC<loginProps> = () => {
         return () => ctx.revert();
     }, []);
     return (
-        <main className=" relative  flex  h-auto w-full flex-col-reverse  bg-[#000002]   lg:h-screen  lg:flex-row  xl:py-6">
+        <main className=" relative  flex  h-auto w-full flex-col-reverse  bg-[#000002]   lg:h-screen  lg:flex-row ">
             <NextSeo title="login" />
             {/* Right */}
             <section
