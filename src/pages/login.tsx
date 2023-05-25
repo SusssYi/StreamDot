@@ -114,13 +114,18 @@ const SingleLoginButton = ({
 }: {
     provider: "google" | "discord" | "guest";
 }) => {
+    const router = useRouter();
     return (
         <div
             className="group flex flex-1 cursor-pointer items-center justify-center  space-x-8 rounded-2xl px-24 py-8 text-2xl shadow-lg shadow-secondary "
             onClick={() => {
-                signIn(provider, {
-                    callbackUrl: "http://localhost:3000/category",
-                });
+                if (provider === "guest") {
+                    router.push("/category");
+                } else {
+                    signIn(provider, {
+                        callbackUrl: "http://localhost:3000/category",
+                    });
+                }
             }}
         >
             <div className="transition-all duration-500 ease-in-out group-hover:scale-125  ">
