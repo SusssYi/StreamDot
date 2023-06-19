@@ -14,7 +14,6 @@ import GsapAnimation from "src/utils/gsapAnimations";
 import Navbar from "../common/Navbar";
 import LoadingSpinCircle from "../ui/LoadingSpinCircle";
 import MainButton from "../ui/MainButton";
-import ContinueWatch from "./ContinueWatch";
 
 interface MainHeroBannerProps {}
 
@@ -215,8 +214,8 @@ const MainHeroBanner: React.FC<MainHeroBannerProps> = () => {
                     </div>
                 </div>
             </div>
-            {/* continue Watching  */}
-            {data.length !== 0 && !isMobile && <ContinueWatch data={data} />}
+            {/* //FIXME:There are no reason  the component disappeared and showing up for some unknow states  */}
+            {/* {data.length !== 0 && !isMobile && <ContinueWatch data={data} />} */}
         </section>
     );
 };
