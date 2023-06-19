@@ -8,6 +8,7 @@ interface IMovieSliderProps {
     title: string;
 }
 const MovieSliderBox: React.FC<IMovieSliderProps> = ({ movieUrl, title }) => {
+    // get movie by url
     const { data, isLoading } = api.tmdb.getMovieByUrl.useQuery({
         url: movieUrl,
     });

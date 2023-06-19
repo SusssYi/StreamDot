@@ -1,8 +1,12 @@
 import axios from "axios";
-
+// tmdb base url
 const baseUrl = "https://api.themoviedb.org/3";
+// imageBaseUrl example: https://image.tmdb.org/t/p/original/2CAL2433ZeIihfX1Hb2139CX0pW.jpg
 const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
+// postImageBaseUrl example: https://image.tmdb.org/t/p/w500/2CAL2433ZeIihfX1Hb2139CX0pW.jpg
 const postImageBaseUrl = "https://image.tmdb.org/t/p/w500/";
+
+// tmdb movie api endpoints
 const movieApis = {
     nowPlaying: `${baseUrl}/movie/now_playing`,
     popular: `${baseUrl}/movie/popular`,
@@ -26,12 +30,14 @@ const movieApis = {
         `${baseUrl}/discover/movie?with_genres=${genre_id}&sort_by=popularity.desc`,
 };
 
+// tmdb tv show api endpoints
 const tvShowApis = {
     getPoplarTvShows: `${baseUrl}/tv/popular`,
     getTopRatedTvShows: `${baseUrl}/tv/top_rated`,
     getTvShowDetails: (tv_id: string) => `${baseUrl}/tv/${tv_id}`,
     getTvShowVideos: (tv_id: string) => `${baseUrl}/tv/${tv_id}/videos`,
 };
+// create axios endpoint for tmdb
 const tmdbBaseEndPoint = axios.create({
     baseURL: baseUrl,
     params: {
@@ -47,7 +53,7 @@ export {
     baseUrl,
     imageBaseUrl,
     movieApis,
-    tmdbBaseEndPoint,
     postImageBaseUrl,
+    tmdbBaseEndPoint,
     tvShowApis,
 };

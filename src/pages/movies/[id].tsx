@@ -12,6 +12,7 @@ import MovieReviews from "src/components/videoDetailPage/MovieReviews";
 import { movieApis } from "src/utils/TMDBApiHelper";
 import { api } from "src/utils/api";
 interface MovieDetailProps {}
+// MovieDetail page
 const MovieDetail: React.FC<MovieDetailProps> = () => {
     const { query } = useRouter();
     const [x, setX] = useState(0);

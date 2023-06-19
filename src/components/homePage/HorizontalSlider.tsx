@@ -33,6 +33,7 @@ const HorizontalSlider: React.FC<HorizontalSliderProps> = () => {
 };
 export default HorizontalSlider;
 
+// `SliderBox` component for the  `HorizontalSlider` component
 const SliderBox = ({
     sliderData,
     duration = 20,

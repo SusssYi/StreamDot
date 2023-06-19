@@ -11,6 +11,7 @@ const TvShowSliderBox: React.FC<UpcomingComponentsProps> = ({
     movieUrl,
     title,
 }) => {
+    // get tv by url
     const { data, isLoading } = api.tmdb.getTvShowByUrl.useQuery({
         url: movieUrl,
     });

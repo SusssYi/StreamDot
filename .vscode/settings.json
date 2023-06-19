@@ -1,5 +1,5 @@
 {
-    "docwriter.style": "JSDoc",
+    "docwriter.style": "Auto-detect",
     "cSpell.words": [
         "Authed",
         "gsap",

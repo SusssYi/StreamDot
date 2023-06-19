@@ -15,12 +15,14 @@ const Login: React.FC<loginProps> = () => {
 
     const { data } = useSession();
 
+    // check if user is logged in
     useEffect(() => {
         if (data?.user) {
             router.replace("/movies");
         }
     }, [data]);
 
+    // Login banner animation
     useEffect(() => {
         const ctx = gsap.context(() => {
             GsapAnimation.LoginAnimation();
@@ -30,7 +32,7 @@ const Login: React.FC<loginProps> = () => {
     return (
         <main className=" relative  flex  h-auto min-h-screen w-full  flex-col-reverse   bg-[#000002]  lg:flex-row ">
             <NextSeo title="login" />
-            {/* Right */}
+            {/* Right Box */}
             <section
                 title="login-right-box"
                 className="flex h-auto   flex-1  flex-col px-12 py-4"
@@ -64,7 +66,7 @@ const Login: React.FC<loginProps> = () => {
                     </div>
                 </div>
             </section>
-            {/* Left */}
+            {/* Left Box */}
             <section
                 title="login-left-box"
                 className="relative  flex flex-1 flex-col lg:flex-row"
@@ -106,6 +108,7 @@ const Login: React.FC<loginProps> = () => {
 };
 export default Login;
 
+// single button for each login provider
 const SingleLoginButton = ({
     provider,
 }: {

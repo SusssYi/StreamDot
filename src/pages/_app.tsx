@@ -14,7 +14,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     Component,
     pageProps: { session, ...pageProps },
 }) => {
-    // smooth scroll
+    // Smooth scroll
     useEffect(() => {
         AOS.init({
             duration: 2000,

@@ -5,6 +5,7 @@ import { MainHeroBanner, MovieCategories } from "src/components/mainPage";
 import Genres from "src/components/mainPage/Genres";
 import TvCategories from "src/components/mainPage/TvCategories";
 interface moviesProps {}
+// Movies page
 const movies: React.FC<moviesProps> = () => {
     return (
         <motion.main

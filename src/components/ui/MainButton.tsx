@@ -1,4 +1,5 @@
-//  primaryButton for the Home page and secondaryButton
+//  PrimaryButton for the Home page and secondaryButton
+
 const MainButton = (
     {
         text,

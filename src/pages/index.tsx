@@ -10,6 +10,7 @@ import {
     SliderSection,
 } from "../components/homePage";
 interface indexProps {}
+// Home page
 const Home: React.FC<indexProps> = () => {
     return (
         <motion.main
