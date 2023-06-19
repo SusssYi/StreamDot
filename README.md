@@ -2,9 +2,11 @@
 
 ## live version :https://stream.suyis.me/
 
+## Note: Your internet must allow you to access Youtube or Google, then you can use this app for all features.
+
 ## Description
 
-This is a simple streaming app that allows users to view streams.
+This is a streaming app that allows users to view streams And add movies and tv shows to their watchList .
 
 ## Installation
 
@@ -30,5 +32,5 @@ http://localhost:3000
 ## Usage
 
 1. Sign in with your google|discord account (you can also view streams without signing in)
-2. Add a tvShow or movie to your watchlist
+2. Add a tvShow or movie to your watchList
 3. Enjoy the stream
