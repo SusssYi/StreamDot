@@ -2,7 +2,7 @@
 
 ## live version :https://stream.suyis.me/
 
-## Note: Your internet must allow you to access Youtube or Google, then you can use this app for all features.
+
 
 ## Description
 
