@@ -1,6 +1,6 @@
 # Stream dot app author: Suyis
 
-## live version :https://stream.suyis.me/
+## live version :https://stream.yisus.me
 
 
 
